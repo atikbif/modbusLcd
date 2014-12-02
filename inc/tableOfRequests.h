@@ -17,10 +17,8 @@
         unsigned char* tx_ptr;
         unsigned char* rx_ptr;
     }modbReq;
-
-    unsigned short getRequestsCount(void);
     modbReq* getRequest(unsigned short num);
-    void getReqHead(void);
+
 
 
 #endif /* TABLEOFREQUESTS_H_INCLUDED */

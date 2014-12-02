@@ -30,7 +30,6 @@ void UartManagerTask( void *pvParameters )
     xLastExecutionTime = xTaskGetTickCount();
     initFlashWrite();
     vTaskDelayUntil( &xLastExecutionTime, ( ( portTickType ) 100 / portTICK_RATE_MS ) );
-    getReqHead();
     initModbusMemory();
     for( ;; )
 	{

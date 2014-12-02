@@ -25,6 +25,7 @@
 #include "uartManager.h"
 #include "lcdManager.h"
 #include "keyScan.h"
+#include "settings.h"
 
 static void MainTask( void *pvParameters );
 
@@ -52,6 +53,7 @@ void MainTask( void *pvParameters )
 	GPIO_Init( GPIOB, &GPIO_InitStructure );
 
     xLastExecutionTime = xTaskGetTickCount();
+    readSettings();
     for( ;; )
 	{
         // toggle LED

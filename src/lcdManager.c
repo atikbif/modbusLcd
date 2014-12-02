@@ -28,7 +28,7 @@ void LcdManagerTask( void *pvParameters )
     unsigned short keyTmr = 0;
     portTickType xLastExecutionTime;
     xLastExecutionTime = xTaskGetTickCount();
-    readSettings();
+    vTaskDelayUntil( &xLastExecutionTime, ( ( portTickType ) 100 / portTICK_RATE_MS ) );
 
     // if normal mode (without program, menu or edit)
     for( ;; )

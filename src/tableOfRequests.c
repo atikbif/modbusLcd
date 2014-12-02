@@ -1,21 +1,19 @@
 #include "tableOfRequests.h"
-#include "flashUpdate.h"
-#include "displayData.h"
+#include "settings.h"
 #include "stm32f10x_conf.h"
 
 
 
 modbReq req;
-static unsigned short reqAmount = 0;
-static unsigned long reqAddr = 0;
+
 
 modbReq* getRequest(unsigned short num)
 {
     unsigned long addr;
     unsigned char reqType = 0;
-    if(num<reqAmount)
+    if(num<getRequestsCount())
     {
-        addr = reqAddr + (unsigned long)num*6;
+        addr = getReqAddr() + (unsigned long)num*6;
         reqType = *(__IO uint8_t*)addr;
         switch(reqType)
         {
@@ -33,23 +31,4 @@ modbReq* getRequest(unsigned short num)
     return (void*)0;
 }
 
-unsigned short getRequestsCount(void) // this function must be called after getReqHead()
-{
-    if(getVersion()==0x01)
-    {
-        return reqAmount;
-    }
-    return 0;
-}
 
-void getReqHead(void)
-{
-    unsigned long addr;
-    if(getVersion()==0x01)
-    {
-        addr = DATA_START_ADDRESS + 16; // address of requests' amount
-        reqAmount = *(__IO uint16_t*)addr;
-        readSettings();
-        reqAddr = getAddressAfterDisplayData();
-    }
-}

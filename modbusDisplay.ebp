@@ -180,6 +180,7 @@
 		<Unit filename="inc\lcdManager.h" />
 		<Unit filename="inc\modbus.h" />
 		<Unit filename="inc\modbusMemory.h" />
+		<Unit filename="inc\settings.h" />
 		<Unit filename="inc\stm32f10x.h" />
 		<Unit filename="inc\stm32f10x_conf.h" />
 		<Unit filename="inc\system_stm32f10x.h" />
@@ -261,6 +262,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src\modbusMemory.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src\settings.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src\startup_stm32f10x_md.S">
