@@ -216,7 +216,6 @@ void USART1_IRQHandler(void)
         if(rx_cnt>=UART_BUF_SIZE) rx_cnt=0;
         USART_ClearITPendingBit(USART1, USART_IT_RXNE);
         rx_tmr = 0;
-        GPIOB->ODR ^= GPIO_Pin_12;
     }
 }
 

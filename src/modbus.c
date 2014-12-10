@@ -1,5 +1,6 @@
 #include "modbus.h"
 #include "crc.h"
+#include "stm32f10x_conf.h"
 
 unsigned short get_cmd_length(modbReq* reqStruct)
 {
@@ -90,7 +91,7 @@ unsigned char check_answer(modbReq* reqStruct, unsigned short byte_cnt)
             if(reqStruct->regCount % 8) tmp++;
             if(reqStruct->rx_ptr[1] != 0x01) err_flag = 1;
             if(reqStruct->rx_ptr[2] != tmp) err_flag = 1;
-            if(byte_cnt != 1 + 2 + tmp*2 + 2) err_flag = 1;
+            if(byte_cnt != 1 + 2 + tmp + 2) err_flag = 1;
             break;
         case CMD_RD_DIN:
             // amount of bytes with discrete inputs' status
@@ -98,7 +99,7 @@ unsigned char check_answer(modbReq* reqStruct, unsigned short byte_cnt)
             if(reqStruct->regCount % 8) tmp++;
             if(reqStruct->rx_ptr[1] != 0x02) err_flag = 1;
             if(reqStruct->rx_ptr[2] != tmp) err_flag = 1;
-            if(byte_cnt != 1 + 2 + tmp*2 + 2) err_flag = 1;
+            if(byte_cnt != 1 + 2 + tmp + 2) err_flag = 1;
             break;
         default: err_flag = 1; break;
     }

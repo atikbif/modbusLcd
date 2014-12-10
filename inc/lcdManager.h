@@ -10,10 +10,6 @@
 
 unsigned short getStrNum(unsigned char rowNum);
 void setStrNum(unsigned char rowNum, unsigned short value);
-unsigned short getStrVarAddress(unsigned char sNum);
-void setStrVarAddress(unsigned char sNum, unsigned short vAddress);
-unsigned char isStrNumFromVar(unsigned char sNum);
-
 void LcdManagerTask( void *pvParameters );
 
 #endif /* LCDMANAGER_H_INCLUDED */

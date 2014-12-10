@@ -17,6 +17,8 @@ static unsigned short strMaxNum[4]={1,1,1,1};  // amount of strings in row
 static unsigned short reqAmount = 0;
 static unsigned long reqAddr = 0;
 static unsigned short varsCount = 0;
+static unsigned char strVarEnable = 0;
+static unsigned short strVarNum[4] = {0,0,0,0};
 
 static unsigned long getVarsAddr(void);
 static unsigned long getVarsOnLcdAddr(void);
@@ -31,6 +33,7 @@ unsigned short getVersion(void)
 void readSettings(void)
 {
     unsigned long addr;
+    unsigned char i;
     if(getVersion() == 0x01)
     {
         addr = DATA_START_ADDRESS + 4; // address of amount of first strings
@@ -47,10 +50,18 @@ void readSettings(void)
         addr = DATA_START_ADDRESS + 12; // address of vars' count
         varsCount = *(__IO uint16_t*)addr;
 
-        addr = DATA_START_ADDRESS + 16; // address of requests' amount
+        addr = DATA_START_ADDRESS + 16;
         reqAmount = *(__IO uint16_t*)addr;
-
         reqAddr = strStartAddr[3] + strMaxNum[3]*20;
+
+        addr = DATA_START_ADDRESS + 18; // address of vars for strings' numbers
+        strVarEnable = *(__IO uint8_t*)addr;
+        addr++;
+        for(i=0;i<4;i++)
+        {
+            strVarNum[i] = *(__IO uint16_t*)addr;
+            addr+=2;
+        }
     }
 }
 
@@ -115,7 +126,7 @@ void getVar(varDef* vDef, unsigned short vIndex)
         vDef->typeCode = *(__IO uint8_t*)addr;
         addr++; // offset for memory address
         vDef->memAddress = *(__IO uint16_t*)addr;
-        addr+=2; // offset for flags
+        addr+=3; // offset for flags
         vDef->flags = *(__IO uint8_t*)addr;
     }
 }
@@ -138,4 +149,15 @@ void getVarOnLcd(varLcdDef* vDef, unsigned short vIndex)
         addr++;
         vDef->idInVarDef = *(__IO uint16_t*)addr;
     }
+}
+
+char isStrVarEnable(unsigned char strNum)
+{
+    return strVarEnable & (1<<strNum)?1:0;
+}
+
+unsigned short getStrVarNum(unsigned char strNum)
+{
+    if(strNum<4) return strVarNum[strNum];
+    return 0;
 }

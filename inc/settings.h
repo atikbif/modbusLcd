@@ -34,6 +34,9 @@ void getVar(varDef* vDef, unsigned short vIndex);
 unsigned long getVarsOnLcdCount(void);
 void getVarOnLcd(varLcdDef* vDef, unsigned short vIndex);
 
+char isStrVarEnable(unsigned char strNum);
+unsigned short getStrVarNum(unsigned char strNum);
+
 
 
 #endif /* SETTINGS_H_INCLUDED */

@@ -15,7 +15,7 @@
 #define START_PAGE          100
 #define END_PAGE            150
 
-static unsigned char uartMode = UART_PROG_MODE;//UART_WORK_MODE;
+static unsigned char uartMode = UART_WORK_MODE;//UART_PROG_MODE;//UART_WORK_MODE;
 static unsigned char waitAnswerTime = 50;
 static unsigned char attemptMax = 3;
 unsigned short req_i = 0;
@@ -48,6 +48,7 @@ void UartManagerTask( void *pvParameters )
                     fill_cmd_buf(request);
                     // send request
                     writeBuf(tmp);
+
                     // wait answer
                     vTaskDelayUntil( &xLastExecutionTime, ( ( portTickType ) tmp / portTICK_RATE_MS ) );                // transmit data
                     vTaskDelayUntil( &xLastExecutionTime, ( ( portTickType ) waitAnswerTime / portTICK_RATE_MS ) );     // wait answer
@@ -55,6 +56,7 @@ void UartManagerTask( void *pvParameters )
                     tmp = getRxCnt();
                     if(tmp)
                     {
+
                         request->rx_ptr = (unsigned char*)getRxPtr();
                         if(check_answer(request,tmp))
                         {

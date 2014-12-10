@@ -24,7 +24,7 @@ modbReq* getRequest(unsigned short num)
             default: return ((void*)0);
         }
         addr++; req.netAddress = *(__IO uint8_t*)addr;
-        addr+=2; req.regCount = *(__IO uint16_t*)addr;
+        addr++; req.regCount = *(__IO uint16_t*)addr;
         addr+=2; req.memAddress = *(__IO uint16_t*)addr;
         return (&req);
     }
