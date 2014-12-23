@@ -10,5 +10,5 @@
 
 void LcdTask( void *pvParameters );
 void setSymbol(unsigned char num, unsigned char value);
-
+unsigned char* getLcdBuf(void);
 #endif /* LCD_H_INCLUDED */

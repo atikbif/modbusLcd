@@ -6,6 +6,10 @@
 #define LCD_MANAGER_TASK_PRIORITY                  ( tskIDLE_PRIORITY + 1 )
 #define LCD_MANAGER_DELAY						   ( ( portTickType ) 10 / portTICK_RATE_MS )
 
+#define LCD_WORK    0
+#define LCD_EDIT    1
+#define LCD_CONF    2
+
 // lcd buf manager
 
 unsigned short getStrNum(unsigned char rowNum);

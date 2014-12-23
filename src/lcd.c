@@ -207,3 +207,8 @@ void clear_buf(void)
     unsigned char tmp;
     for(tmp=0;tmp<LCD_BUF_SIZE;tmp++) lcd_buf[tmp] = 0x20;
 }
+
+unsigned char* getLcdBuf(void)
+{
+    return lcd_buf;
+}

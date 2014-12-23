@@ -187,6 +187,7 @@
 		<Unit filename="inc\tableOfRequests.h" />
 		<Unit filename="inc\uart.h" />
 		<Unit filename="inc\uartManager.h" />
+		<Unit filename="inc\wrRequests.h" />
 		<Unit filename="kernelSrc\croutine.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -280,6 +281,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src\uartManager.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src\wrRequests.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="stm32f103cb_flash.ld" />

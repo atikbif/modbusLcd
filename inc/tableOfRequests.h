@@ -5,6 +5,8 @@
     #define CMD_RD_INP  2
     #define CMD_RD_COIL 3
     #define CMD_RD_DIN  4
+    #define CMD_WR_COIL 5
+    #define CMD_WR_HLD  6
 
     // round of mdbus requests
 

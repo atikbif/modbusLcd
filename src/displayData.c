@@ -12,7 +12,7 @@ unsigned char getSymbol(unsigned char rowNum, unsigned short strNum, unsigned ch
     if(getVersion()==0x01)
     {
         addr = getStrStartAddr(rowNum) + strNum*20 + pos;
-        if(addr & 0x01)
+        /*if(addr & 0x01)
         {
             addr--;
             rdValue = (*(__IO uint16_t*) addr);
@@ -21,7 +21,8 @@ unsigned char getSymbol(unsigned char rowNum, unsigned short strNum, unsigned ch
         {
             rdValue = (*(__IO uint16_t*) addr);
             rdValue = rdValue & 0xFF;
-        }
+        }*/
+        rdValue = (*(__IO uint8_t*) addr);
         return rdValue;
     }else return '*';
 }

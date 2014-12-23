@@ -3,6 +3,6 @@
 
 // calculate crc
 
-unsigned int GetCRC16 (unsigned char* ptr,unsigned short cnt);
+unsigned short GetCRC16 (unsigned char* ptr,unsigned short cnt);
 
 #endif /* CRC_H_INCLUDED */

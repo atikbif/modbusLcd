@@ -57,7 +57,7 @@ void MainTask( void *pvParameters )
     for( ;; )
 	{
         // toggle LED
-        //GPIOB->ODR ^= GPIO_Pin_12;
+        GPIOB->ODR ^= GPIO_Pin_12;
         vTaskDelayUntil( &xLastExecutionTime, Main_DELAY );
     }
 }

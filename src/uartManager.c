@@ -8,9 +8,7 @@
 #include "uart.h"
 #include "task.h"
 
-#define UART_WORK_MODE      0
-#define UART_PROG_MODE      1
-#define UART_UNDEF_MODE          2
+
 
 #define START_PAGE          100
 #define END_PAGE            150
@@ -196,4 +194,9 @@ void setWaitAnswerPauseMs(unsigned char value)
 void setAttemptOfRequestCount(unsigned char value)
 {
     if((value>0)&&(value<=10)) attemptMax = value;
+}
+
+unsigned char getUartMode(void)
+{
+    return uartMode;
 }

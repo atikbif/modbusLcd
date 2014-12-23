@@ -57,7 +57,7 @@ const unsigned char crc16L[256]={
 0x43, 0x83, 0x41, 0x81, 0x80, 0x40} ;
 
 // рассчёт CRC16 табличным методом (полином - A001)
-unsigned int GetCRC16 (unsigned char* ptr,unsigned short cnt)
+unsigned short GetCRC16 (unsigned char* ptr,unsigned short cnt)
 {
     unsigned char i;
     unsigned char CRCH=0xFF,CRCL=0xFF;
